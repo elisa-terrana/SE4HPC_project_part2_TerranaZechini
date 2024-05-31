@@ -20,4 +20,4 @@ jobs:
       run: cmake --build build
 
     - name: Run Tests
-      run: ctest ./build/test_multiplication
+      run: ./build/test_multiplication
