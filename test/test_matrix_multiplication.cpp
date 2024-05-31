@@ -44,23 +44,23 @@ TEST(MatrixMultiplicationTest, TestMultiplyMatrices) {
 
 // In order to detect all the other errors, we can start with the simplest possible case: multiplication between two scalars.
 // We expect errors 12 and 20.
-// TEST(MatrixMultiplicationTest1, TestMultiplyMatrices) {
-//     std::vector<std::vector<int>> A = {
-//         {1}
-//     };
-//     std::vector<std::vector<int>> B = {
-//         {2}
-//     };
-//     std::vector<std::vector<int>> C(1, std::vector<int>(1, 0));
+TEST(MatrixMultiplicationTest1, TestMultiplyMatrices) {
+    std::vector<std::vector<int>> A = {
+        {1}
+    };
+    std::vector<std::vector<int>> B = {
+        {2}
+    };
+    std::vector<std::vector<int>> C(1, std::vector<int>(1, 0));
 
-//     multiplyMatrices(A, B, C, 1, 1, 1);
+    multiplyMatrices(A, B, C, 1, 1, 1);
 
-//     std::vector<std::vector<int>> expected(1, std::vector<int>(1, 0));
+    std::vector<std::vector<int>> expected(1, std::vector<int>(1, 0));
 
-//     multiplyMatricesWithoutErrors(A, B, expected, 1, 1, 1);
+    multiplyMatricesWithoutErrors(A, B, expected, 1, 1, 1);
 
-//     ASSERT_EQ(C, expected) << "Matrix multiplication test failed! :(((()";
-// }
+    ASSERT_EQ(C, expected) << "Matrix multiplication test failed! :(((()";
+}
 // * Error 12.
 // * Error 18: Matrix A is a square matrix!
 // * Error 20.
