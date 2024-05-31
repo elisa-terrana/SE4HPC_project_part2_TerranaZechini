@@ -12,9 +12,13 @@ jobs:
 
     - name: Setup MPI
       uses: mpi4py/setup-mpi@v1
+      
+    - uses: Bacondish2023/setup-googletest@v1
+      with:
+        tag: v1.14.0
 
-    - name: Setup googletest
-      run: cd ${{github.workspace}}/googletest && sudo cmake CMakeLists.txt && cd ..
+    # - name: Setup googletest
+    #   run: cd ${{github.workspace}}/googletest && sudo cmake CMakeLists.txt && cd ..
 
     # - name: Install gtest manually
     #   run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
