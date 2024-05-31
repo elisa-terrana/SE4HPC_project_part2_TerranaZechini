@@ -12,15 +12,17 @@ include_directories(include)
 add_subdirectory(googletest)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
+find_package(GTest REQUIRED)
+
 # non aggiungo matrix_mult che non serve
 set(SOURCES src/main.cpp)
 
 add_executable(main ${SOURCES})
-target_link_libraries(main ${MPI_LIBRARIES} ${CMAKE_SOURCE_DIR}/lib/libmatrix_multiplication_without_errors.a)
+target_link_libraries(main ${MPI_LIBRARIES} ${GTEST_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR}/lib/libmatrix_multiplication_without_errors.a)
 
 
 add_executable(test_multiplication test/test_matrix_multiplication.cpp)
-target_link_libraries(test_multiplication gtest gtest_main ${CMAKE_SOURCE_DIR}/lib/libmatrix_multiplication_without_errors.a ${MPI_LIBRARIES})
+target_link_libraries(test_multiplication gtest gtest_main ${GTEST_BOTH_LIBRARIES} ${CMAKE_SOURCE_DIR}/lib/libmatrix_multiplication_without_errors.a ${MPI_LIBRARIES})
 
 
 if (MPI_COMPILE_FLAGS)
