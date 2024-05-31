@@ -9,8 +9,8 @@ include_directories(${MPI_INCLUDE_PATH})
 include_directories(include)
 
 
-add_subdirectory(googletest)
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+# add_subdirectory(googletest)
+# include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 find_package(GTest REQUIRED)
 
