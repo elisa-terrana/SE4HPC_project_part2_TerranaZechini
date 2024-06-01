@@ -25,19 +25,3 @@ jobs:
 
     - name: Run Tests
       run: ./build/test_multiplication
-
-    - uses: eWaterCycle/setup-singularity@v7
-      with:
-        singularity-version: 3.8.3
-
-    - name: Create a Singularity container
-      run: singularity build --fakeroot Singularity.sif Singularity.def
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: singularity-container
-        path: Singularity.sif
-
-#    - name: Run a singularity container
-#      run: singularity run Singularity.sif
