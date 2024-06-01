@@ -25,3 +25,13 @@ jobs:
 
     - name: Run Tests
       run: ./build/test_multiplication
+
+    - uses: eWaterCycle/setup-singularity@v7
+      with:
+        singularity-version: 4.0.0
+
+    - name: Create a Singularity container
+      run: singularity build Singularity.sif Singularity.def
+
+    - name: Run a singularity container
+      run: singularity run Singularity.sif
