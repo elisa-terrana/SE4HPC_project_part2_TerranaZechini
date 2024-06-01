@@ -39,5 +39,5 @@ jobs:
         name: singularity-container
         path: Singularity.sif
 
-#    - name: Run a singularity container
-#      run: singularity run Singularity.sif
+   - name: Run a singularity container
+     run: singularity run Singularity.sif
