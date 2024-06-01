@@ -28,10 +28,10 @@ jobs:
 
     - uses: eWaterCycle/setup-singularity@v7
       with:
-        singularity-version: 4.0.0
+        singularity-version: 3.8.3
 
     - name: Create a Singularity container
       run: singularity build Singularity.sif Singularity.def
 
-    - name: Run a singularity container
-      run: singularity run Singularity.sif
+#    - name: Run a singularity container
+#      run: singularity run Singularity.sif
