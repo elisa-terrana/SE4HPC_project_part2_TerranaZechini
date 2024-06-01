@@ -33,5 +33,11 @@ jobs:
     - name: Create a Singularity container
       run: singularity build --fakeroot Singularity.sif Singularity.def
 
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: singularity-container
+        path: Singularity.sif
+
 #    - name: Run a singularity container
 #      run: singularity run Singularity.sif
