@@ -1,13 +1,33 @@
 Bootstrap: docker
-From: ubuntu:20.04
+From: ubuntu:22.04
+
+%files
+    src/main.cpp /opt
+    include/matrix_multiplication.h /opt
+    lib/libmatrix_multiplication_without_errors.a /opt
+    matrixA.txt /opt
+    matrixB.txt /opt
+
+
+%environment
+    export LC_ALL=C
+    export PATH=/usr/local/bin:$PATH
+    export OMPI_DIR=/opt/ompi
+    export PATH="$OMPI_DIR/bin:$PATH"
+    export LD_LIBRARY_PATH="$OMPI_DIR/lib:$LD_LIBRARY_PATH"
+    export MANPATH="$OMPI_DIR/share/man:$MANPATH"
+
 
 %post
-    apt-get update
-    apt-get install -y build-essential
-    export DEBIAN_FRONTEND=noninteractive
-    apt-get install -y libopenmpi-dev
-    apt-get clean
+    echo "Installing required packages..."
+    apt-get update && apt-get install -y wget git bash gcc gfortran g++ make file bzip2
+    # apt-get update
+    # apt-get install -y build-essential
+    # export DEBIAN_FRONTEND=noninteractive
+    # apt-get install -y libopenmpi-dev
+    # apt-get clean
 
+    echo "Installing Open MPI"
     export OMPI_DIR=/opt/ompi
     export OMPI_VERSION=4.1.5
     export OMPI_URL="https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-$OMPI_VERSION.tar.bz2"
@@ -25,20 +45,6 @@ From: ubuntu:20.04
     echo "Compiling the MPI application..."
     cd /opt && mpicc -o main main.cpp
 
-%environment
-    export LC_ALL=C
-    export PATH=/usr/local/bin:$PATH
-    export OMPI_DIR=/opt/ompi
-    export PATH="$OMPI_DIR/bin:$PATH"
-    export LD_LIBRARY_PATH="$OMPI_DIR/lib:$LD_LIBRARY_PATH"
-    export MANPATH="$OMPI_DIR/share/man:$MANPATH"
-
-%files
-    src/main.cpp /opt
-    include/matrix_multiplication.h /opt
-    lib/libmatrix_multiplication_without_errors.a /opt
-    matrixA.txt /opt
-    matrixB.txt /opt
 
 %runscript
     mpirun -n 2 ./opt/main
