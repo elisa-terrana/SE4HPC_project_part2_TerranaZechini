@@ -4,11 +4,8 @@ From: ubuntu:20.04
 %post
     apt-get update
     apt-get install -y build-essential
-    apt-get install -y libc6
-    apt-get install -y libstdc++6
     export DEBIAN_FRONTEND=noninteractive
     apt-get install -y libopenmpi-dev
-    apt-get install -y mpich
     apt-get clean
 
 %environment
@@ -17,12 +14,12 @@ From: ubuntu:20.04
     export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/openmpi/lib:$LD_LIBRARY_PATH
 
 %files
-    main
+    build/main
     matrixA.txt
     matrixB.txt
 
-%runscript
-    ./main
+# %runscript
+#     ./main
     
 %labels
     Author TerranaZechini
