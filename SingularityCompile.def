@@ -47,8 +47,8 @@ From: ubuntu:22.04
     cd /opt && mpicc -o main main.cpp
 
 
-%runscript
-    mpirun -n 2 ./opt/main
+# %runscript
+#     mpirun -n 2 ./opt/main
 
 
 %labels

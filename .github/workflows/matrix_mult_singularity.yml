@@ -30,7 +30,7 @@ jobs:
       with:
         singularity-version: 3.8.3
 
-    - name: Create a Singularity container
+    - name: Create Singularity container
       run: singularity build --fakeroot Singularity.sif SingularityCompile.def
 
     - name: Upload artifact
@@ -39,5 +39,5 @@ jobs:
         name: singularity-container
         path: Singularity.sif
 
-    - name: Run a singularity container
-      run: singularity run Singularity.sif
+    - name: Run Singularity container
+      run: mpirun -n 2 singularity run Singularity.sif /opt/main
