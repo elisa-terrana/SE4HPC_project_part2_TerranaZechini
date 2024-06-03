@@ -2,7 +2,7 @@ Bootstrap: library
 From: ubuntu:22.04
 
 %files
-    src/main.cpp /opt/src
+    src/main.cpp /opt
     matrixA.txt /opt
     matrixB.txt /opt
 
@@ -21,7 +21,8 @@ From: ubuntu:22.04
         mpi-default-dev \
         g++
     apt-get clean
-    mpicc -o /opt/main /opt/src/main.cpp
+    mkdir -p /opt
+    cd /opt && mpicc -o main main.cpp
 
 %runscript
     mpirun -n 2 ./opt/main
