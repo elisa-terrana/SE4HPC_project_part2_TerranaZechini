@@ -40,4 +40,4 @@ jobs:
         path: Singularity.sif
 
     - name: Run Singularity container
-      run: singularity run Singularity.sif /opt/main
+      run: mpirun -n 2 singularity run Singularity.sif /opt/main
