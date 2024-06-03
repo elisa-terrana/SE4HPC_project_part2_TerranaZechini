@@ -10,4 +10,7 @@ mkdir -p $TMPDIR
 
 module load singularity
 
-singularity run -c --bind /scratch_local:$TMPDIR Singularity.sif
+singularity run Singularity.sif
+
+
+# --bind /scratch_local:$TMPDIR bash -c "cmod 
