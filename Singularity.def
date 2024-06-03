@@ -2,12 +2,7 @@ Bootstrap: library
 From: ubuntu:22.04
 
 %files
-    CMakeLists.txt /opt
-    src/main.cpp /opt/src
-    include/matrix_multiplication.h /opt/include
-    lib/libmatrix_multiplication_without_errors.a /opt/lib
-    matrixA.txt /opt
-    matrixB.txt /opt
+    ./ /opt
 
 
 %environment
@@ -24,8 +19,8 @@ From: ubuntu:22.04
         cmake \
         g++
     apt-get clean
-    
-    cd opt
+
+    mkdir -p opt && cd opt
     mkdir -p build && cd build
     cmake ..
     cmake --build .
