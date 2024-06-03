@@ -10,4 +10,4 @@ mkdir -p $TMPDIR
 
 module load singularity
 
-singularity run --bind /scratch_local:$TMPDIR Singularity.sif
+singularity run -c --bind /scratch_local:$TMPDIR Singularity.sif
