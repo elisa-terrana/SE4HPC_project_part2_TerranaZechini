@@ -41,9 +41,10 @@ jobs:
       run: sudo apt-get install -y sshpass
 
     - name: Tranfer with scp
-      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity.sif job.sh ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}
+      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity.sif job.sh ${{ secrets.USERTZ }}@login.g100.cineca.it:
+      # /g100/home/usertrain/${{ secrets.USERTZ }}
 
     - name: Run job
       run: |
-        ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}"
-        sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }} "sbatch job.sh"
+        ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
+        sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it "sbatch job.sh"
