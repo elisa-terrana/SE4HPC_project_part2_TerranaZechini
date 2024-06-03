@@ -7,7 +7,7 @@ From: ubuntu:22.04
 
 %environment
     export LC_ALL=C
-    export PATH=/usr/local/bin:$PATH
+    export PATH=/opt:$PATH
     # export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/openmpi/lib:$LD_LIBRARY_PATH
 
 
