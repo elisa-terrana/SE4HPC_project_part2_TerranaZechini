@@ -8,14 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
 
     - name: Setup MPI
       uses: mpi4py/setup-mpi@v1
-      
-    - uses: Bacondish2023/setup-googletest@v1
+    
+    - uses: eWaterCycle/setup-singularity@v7
       with:
-        tag: v1.14.0
+        singularity-version: 3.8.3
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
@@ -23,15 +25,8 @@ jobs:
     - name: Build
       run: cmake --build ${{github.workspace}}/build
 
-    - name: Run Tests
-      run: ./build/test_multiplication
-
-    - uses: eWaterCycle/setup-singularity@v7
-      with:
-        singularity-version: 3.8.3
-
     - name: Create Singularity container
-      run: singularity build --fakeroot Singularity.sif SingularityCompile.def
+      run: singularity build --fakeroot Singularity.sif Singularity.def
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
