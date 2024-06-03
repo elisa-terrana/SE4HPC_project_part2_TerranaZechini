@@ -35,7 +35,7 @@ jobs:
         path: Singularity.sif
 
     - name: Install sshpass
-      run: apt-get install -y sshpass
+      run: sudo apt-get install -y sshpass
 
     - name: Tranfer with scp
       run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity.sif job.sh a08trb67@login.g100.cineca.it:~/
