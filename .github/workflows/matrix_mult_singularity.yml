@@ -34,5 +34,13 @@ jobs:
         name: singularity-container
         path: Singularity.sif
 
-    - name: Run a singularity container
-      run: singularity run Singularity.sif
+    - name: Install sshpass
+      run: apt-get install -y sshpass
+
+    - name: Tranfer with scp
+      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity.sif job.sh a08trb67@login.g100.cineca.it:~/
+
+    - name: Run job
+      run: |
+        ssh-keygen -f "~/.ssh/known_hosts" -R "login.g100.cineca.it"
+        sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no a08trb67@login.g100.cineca.it "sbatch job.sh"
