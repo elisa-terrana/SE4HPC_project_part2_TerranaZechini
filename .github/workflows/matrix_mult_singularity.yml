@@ -41,8 +41,8 @@ jobs:
       run: sudo apt-get install -y sshpass
 
     - name: Tranfer with scp
-      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity.sif job.sh ${{ secrets.USERTZ }}@login.g100.cineca.it:
-      # /g100/home/usertrain/${{ secrets.USERTZ }}
+      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity.sif job.sh ${{ secrets.USERTZ }}@login.g100.cineca.it:/
+    # /g100/home/usertrain/${{ secrets.USERTZ }}
 
     - name: Run job
       run: |
