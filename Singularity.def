@@ -19,9 +19,6 @@ From: ubuntu:22.04
     build/main
     matrixA.txt
     matrixB.txt
-
-%runscript
-    ./main
     
 %labels
     Author TerranaZechini
