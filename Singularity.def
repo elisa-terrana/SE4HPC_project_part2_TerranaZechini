@@ -3,6 +3,8 @@ From: ubuntu:22.04
 
 %files
     src/main.cpp /opt
+    include/matrix_multiplication.h /opt
+    lib/libmatrix_multiplication_without_errors.a /opt
     matrixA.txt /opt
     matrixB.txt /opt
 
@@ -24,8 +26,10 @@ From: ubuntu:22.04
     mkdir -p /opt
     cd /opt && mpicc -o main main.cpp
 
+
 %runscript
     mpirun -n 2 ./opt/main
+    
     
 %labels
     Author TerranaZechini
