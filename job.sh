@@ -5,8 +5,6 @@
 #SBATCH --ntasks 2
 #SBATCH --time=00:20:00
 
-module load singularity
-
 export TMPDIR=$HOME/tmp
 mkdir -p $TMPDIR
 
