@@ -15,8 +15,7 @@ From: ubuntu:22.04
     apt-get install -y build-essential \
         mpi-default-bin \
         mpi-default-dev \
-        cmake \
-        g++
+        cmake
     apt-get clean
 
     mkdir -p opt && cd opt
