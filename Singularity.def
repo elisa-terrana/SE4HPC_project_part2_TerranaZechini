@@ -20,8 +20,8 @@ From: ubuntu:22.04
     matrixA.txt /build
     matrixB.txt /build
 
-%runscript
-    mpirun -n 2 ./build/main
+# %runscript
+#     mpirun -n 2 ./build/main
     
 %labels
     Author TerranaZechini
