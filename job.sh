@@ -8,4 +8,4 @@
 export TMPDIR=$HOME/tmp
 mkdir -p $TMPDIR
 
-singularity exec --bind /scratch_local:$TMPDIR Singularity.sif "mpirun -n 2 /opt/build/main"
+singularity exec -c --bind /scratch_local:$TMPDIR Singularity.sif

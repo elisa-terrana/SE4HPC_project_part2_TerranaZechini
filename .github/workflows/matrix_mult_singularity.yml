@@ -34,8 +34,8 @@ jobs:
         name: singularity-container
         path: Singularity.sif
 
-    - name: Run Singularity container
-      run: singularity run Singularity.sif
+    # - name: Run Singularity container
+    #   run: singularity run Singularity.sif
 
     - name: Install sshpass
       run: sudo apt-get install -y sshpass

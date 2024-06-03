@@ -24,8 +24,8 @@ From: ubuntu:22.04
     cmake --build .
 
 
-# %runscript
-#   mpirun -n 2 ./opt/build/main
+%runscript
+  mpirun -n 2 ./opt/build/main
     
 
 %labels
