@@ -2,9 +2,10 @@ Bootstrap: library
 From: ubuntu:22.04
 
 %files
-    src/main.cpp /opt
-    include/matrix_multiplication.h /opt
-    lib/libmatrix_multiplication_without_errors.a /opt
+    CMakeLists.txt /opt
+    src/main.cpp /opt/src
+    include/matrix_multiplication.h /opt/include
+    lib/libmatrix_multiplication_without_errors.a /opt/lib
     matrixA.txt /opt
     matrixB.txt /opt
 
@@ -19,17 +20,20 @@ From: ubuntu:22.04
     apt-get update
     apt-get install -y build-essential \
         mpi-default-bin \
-        cmake \
         mpi-default-dev \
+        cmake \
         g++
     apt-get clean
-    mkdir -p /opt
-    cd /opt && mpicc -o main main.cpp
+    
+    cd opt
+    mkdir -p build && cd build
+    cmake ..
+    cmake --build .
 
 
 %runscript
-    mpirun -n 2 ./opt/main
+   mpirun -n 2 ./build/main
     
-    
+
 %labels
     Author TerranaZechini
