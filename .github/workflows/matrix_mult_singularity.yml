@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         submodules: 'recursive'
 
@@ -34,5 +34,16 @@ jobs:
         name: singularity-container
         path: Singularity.sif
 
-    - name: Run Singularity container
-      run: mpirun -n 2 singularity run Singularity.sif /opt/main
+    # - name: Run Singularity container
+    #   run: mpirun -n 2 singularity run Singularity.sif /opt/main
+
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
+    - name: Tranfer with scp
+      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity.sif job.sh a08trb67@login.g100.cineca.it:/g100/home/usertrain/a08trb67
+
+    - name: Run job
+      run: |
+        ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
+        sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no a08trb67@login.g100.cineca.it "sbatch job.sh"
