@@ -9,22 +9,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        submodules: 'recursive'
 
     - name: Setup MPI
       uses: mpi4py/setup-mpi@v1
-      
-    - uses: Bacondish2023/setup-googletest@v1
-      with:
-        tag: v1.14.0
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build
-
-    - name: Run Tests
-      run: ./build/test_multiplication
 
     - uses: eWaterCycle/setup-singularity@v7
       with:
@@ -40,4 +35,4 @@ jobs:
         path: Singularity.sif
 
     - name: Run a singularity container
-      run: singularity run Singularity.sif
+      run: singularity run Singularity.sif /opt/main

@@ -8,12 +8,8 @@ include_directories(${MPI_INCLUDE_PATH})
 
 include_directories(include)
 
-# REMOVED BY US (use this to build locally)
-# add_subdirectory(googletest)
-# include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-
-# ADDED BY US (this is used to build automatically in by the github action)
-find_package(GTest REQUIRED)
+add_subdirectory(googletest)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 # non aggiungo matrix_mult che non serve
 set(SOURCES src/main.cpp)
