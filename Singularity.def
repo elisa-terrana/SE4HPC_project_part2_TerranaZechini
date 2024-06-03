@@ -21,8 +21,6 @@ From: ubuntu:22.04
         mpi-default-dev \
         g++
     apt-get clean
-    mkdir -p /opt
-    mkdir -p /opt/src
     mpicc -o /opt/main /opt/src/main.cpp
 
 %runscript
