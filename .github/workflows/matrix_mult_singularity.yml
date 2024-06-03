@@ -45,5 +45,5 @@ jobs:
 
     - name: Run job
       run: |
-        ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
+        ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}"
         sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }} "sbatch job.sh"
