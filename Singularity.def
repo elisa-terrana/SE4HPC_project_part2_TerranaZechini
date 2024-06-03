@@ -16,9 +16,12 @@ From: ubuntu:22.04
     export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/openmpi/lib:$LD_LIBRARY_PATH
 
 %files
-    build/main
-    matrixA.txt
-    matrixB.txt
+    build/main /build
+    matrixA.txt /build
+    matrixB.txt /build
+
+%runscript
+    mpirun -n 2 ./build/main
     
 %labels
     Author TerranaZechini
