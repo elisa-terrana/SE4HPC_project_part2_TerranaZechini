@@ -40,6 +40,9 @@ From: ubuntu:22.04
     export LD_LIBRARY_PATH=$OMPI_DIR/lib:$LD_LIBRARY_PATH
 
 
+%runscript
+    mpirun -n 2 ./opt/main
+
 %labels
     Author TerranaZechini
 
