@@ -21,7 +21,7 @@ From: ubuntu:22.04
     matrixB.txt
 
 %runscript
-    mpirun -n 2 ./main
+    ./main
     
 %labels
     Author TerranaZechini
