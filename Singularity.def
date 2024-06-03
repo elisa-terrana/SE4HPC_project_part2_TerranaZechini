@@ -25,7 +25,8 @@ From: ubuntu:22.04
 
 
 %runscript
-  mpirun -n 2 ./opt/build/main
+  cd opt/build
+  mpirun -n 2 ./main
     
 
 %labels
