@@ -8,4 +8,4 @@
 export TMPDIR=$HOME/tmp
 mkdir -p $TMPDIR
 
-singularity exec -c --bind /scratch_local:$TMPDIR Singularity.sif
+singularity run -c --bind /scratch_local:$TMPDIR Singularity.sif
