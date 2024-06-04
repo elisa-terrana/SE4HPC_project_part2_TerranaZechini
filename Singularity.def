@@ -27,7 +27,7 @@ From: ubuntu:22.04
     mv /opt/matrix*.txt /opt/exec
 
 %runscript
-  mpirun -n 2 ./opt/exec/main /opt/exec/matrix*.txt
+  mpirun -n 2 /opt/exec/main /opt/exec/matrix*.txt
   exec echo "$@"
     
 
