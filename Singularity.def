@@ -3,13 +3,11 @@ From: ubuntu:22.04
 
 %files
     ./ /opt
-    ./matrixA.txt /opt
-    ./matrixB.txt /opt
 
 
 %environment
     export LC_ALL=C
-    export PATH=/opt/build:$PATH
+    export PATH=/opt:$PATH
 
 
 %post
@@ -24,10 +22,11 @@ From: ubuntu:22.04
     mkdir -p build && cd build
     cmake ..
     cmake --build .
-    
+    mv main /opt
+
 
 %runscript
-  mpirun -n 2 /opt/build/main
+  mpirun -n 2 /opt/main
   exec echo "$@"
     
 
