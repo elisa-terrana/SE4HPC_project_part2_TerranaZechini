@@ -20,9 +20,7 @@ jobs:
         singularity-version: 3.8.3  
 
     - name: Create Singularity container
-      run: |
-        export SINGULARITY_BINDPATH=/opt/build
-        singularity build --fakeroot --bind=/opt/build Singularity1.sif Singularity.def
+      run: singularity build --fakeroot Singularity1.sif Singularity.def
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
