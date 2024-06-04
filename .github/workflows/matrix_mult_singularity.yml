@@ -32,7 +32,7 @@ jobs:
       run: sudo apt-get install -y sshpass
 
     - name: Tranfer with scp
-      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity1.sif job1.sh matrixA.txt matrixB.txt ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}
+      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity1.sif job1.sh ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}
 
     - name: Run job
       run: |

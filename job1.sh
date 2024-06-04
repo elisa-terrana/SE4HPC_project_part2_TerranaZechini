@@ -8,4 +8,7 @@
 export TMPDIR=$HOME/tmp
 mkdir -p $TMPDIR
 
+module load singularity
+module load openmpi
+
 singularity run -c --bind /scratch_local:$TMPDIR Singularity1.sif

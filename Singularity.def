@@ -2,12 +2,7 @@ Bootstrap: library
 From: ubuntu:22.04
 
 %files
-    ./ /opt
-
-
-%environment
-    export LC_ALL=C
-    export PATH=/opt/exec:$PATH
+    ./ /opt/
 
 
 %post
@@ -22,14 +17,19 @@ From: ubuntu:22.04
     mkdir -p build && cd build
     cmake ..
     cmake --build .
-    cd .. && mkdir -p exec
-    mv /opt/build/main /opt/exec
-    mv /opt/matrix*.txt /opt/exec
+
+
+%environment
+    export PATH=/opt/:$PATH
+
 
 %runscript
-  mpirun -n 2 /opt/exec/main /opt/exec/matrix*.txt
-  exec echo "$@"
+    cd /opt
+    mpirun -n 2 ./build/main
     
 
 %labels
     Author TerranaZechini
+
+
+
