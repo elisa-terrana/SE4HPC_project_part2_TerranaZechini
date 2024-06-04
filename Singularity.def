@@ -8,7 +8,6 @@ From: ubuntu:22.04
 %environment
     export LC_ALL=C
     export PATH=$PATH:/opt
-    export SINGULARITY_BINDPATH=/opt/build
 
 
 %post
@@ -26,6 +25,7 @@ From: ubuntu:22.04
 
 
 %runscript
+  export SINGULARITY_BINDPATH=/opt/build
   # chmod +x ./opt/build/main
   mpirun -n 2 ./opt/build/main
   exec echo "$@"
