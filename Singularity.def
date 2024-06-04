@@ -6,8 +6,9 @@ From: ubuntu:22.04
 
 
 %environment
+    export LC_ALL=C
     # export PATH=/opt:$PATH
-    export SINGULARITY_BINDPATH=/opt/build
+    export SINGULARITY_BINDPATH=/opt/build:$SINGULARITY_BINDPATH
 
 
 %post
@@ -25,8 +26,9 @@ From: ubuntu:22.04
 
 
 %runscript
-  cd opt/build
-  mpirun -n 2 ./main
+  # chmod +x ./opt/build/main
+  mpirun -n 2 ./opt/build/main
+  exec echo "$@"
     
 
 %labels
