@@ -24,11 +24,11 @@ From: ubuntu:22.04
     cmake --build .
     cd ..
     cd opt && mkdir exec
-    mv main /opt/exec
-    mv matrix*.txt /opt/exec
+    mv /opt/build/main /opt/exec
+    mv /opt/matrix*.txt /opt/exec
 
 %runscript
-  mpirun -n 2 /opt/exec/main
+  mpirun -n 2 ./opt/exec/main /opt/exec/matrix*.txt
   exec echo "$@"
     
 
