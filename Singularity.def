@@ -7,7 +7,7 @@ From: ubuntu:22.04
 
 %environment
     export LC_ALL=C
-    export PATH=/opt:$PATH
+    export PATH=/opt/build:$PATH
 
 
 %post
@@ -22,12 +22,11 @@ From: ubuntu:22.04
     mkdir -p build && cd build
     cmake ..
     cmake --build .
-    mv main /opt
+    # mv main /opt
 
 
 %runscript
-  # chmod +x /opt/build/main
-  mpirun -n 2 /opt/main
+  mpirun -n 2 /opt/build/main
   exec echo "$@"
     
 
