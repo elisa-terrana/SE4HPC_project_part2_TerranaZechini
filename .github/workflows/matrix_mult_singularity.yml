@@ -43,7 +43,7 @@ jobs:
     # - name: Run Singularity container
     #   run: singularity run Singularity.sif
 
-  run:
+  run-on-Galileo:
     needs: [setup, build]
 
     runs-on: ubuntu-latest
