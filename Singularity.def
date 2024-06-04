@@ -22,7 +22,7 @@ From: ubuntu:22.04
     mkdir -p build && cd build
     cmake ..
     cmake --build .
-
+    mv matrix*.txt build
 
 %runscript
   mpirun -n 2 /opt/build/main
