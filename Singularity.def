@@ -3,6 +3,8 @@ From: ubuntu:22.04
 
 %files
     ./ /opt
+    ./matrixA.txt /opt
+    ./matrixB.txt /opt
 
 
 %environment
@@ -22,7 +24,7 @@ From: ubuntu:22.04
     mkdir -p build && cd build
     cmake ..
     cmake --build .
-    mv matrix*.txt build
+    
 
 %runscript
   mpirun -n 2 /opt/build/main
