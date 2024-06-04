@@ -35,7 +35,6 @@ jobs:
         path: Singularity.sif
 
   galileo:
-    needs: [setup, build]
 
     runs-on: ubuntu-latest
 
