@@ -3,8 +3,8 @@ name: Matrix Multiplication with Singularity Container
 on: [push, pull_request]
 
 jobs:
-  setup:
-
+  job1:
+    name: setup
     runs-on: ubuntu-latest
 
     steps:
@@ -19,9 +19,9 @@ jobs:
       with:
         singularity-version: 3.8.3
 
-  build:
-    needs: setup
-
+  job2:
+    name: build
+    needs: job1
     runs-on: ubuntu-latest
 
     steps:
@@ -34,8 +34,9 @@ jobs:
         name: singularity-container
         path: Singularity.sif
 
-  galileo:
-
+  job3:
+    name: run-on-Galileo
+    needs: [job1, job2]
     runs-on: ubuntu-latest
 
     - name: Install sshpass
