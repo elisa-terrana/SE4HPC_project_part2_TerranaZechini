@@ -26,7 +26,7 @@ From: ubuntu:22.04
 
 
 %runscript
-  # chmod +x ./opt/build/main
+  chmod +x ./opt/build/main
   mpirun -n 2 ./opt/build/main
   exec echo "$@"
     
