@@ -22,8 +22,7 @@ From: ubuntu:22.04
     mkdir -p build && cd build
     cmake ..
     cmake --build .
-    cd ..
-    cd opt && mkdir exec
+    cd .. && mkdir -p exec
     mv /opt/build/main /opt/exec
     mv /opt/matrix*.txt /opt/exec
 
