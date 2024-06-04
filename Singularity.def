@@ -25,9 +25,8 @@ From: ubuntu:22.04
 
 
 %runscript
-  export SINGULARITY_BINDPATH=/opt/build
-  # chmod +x ./opt/build/main
-  mpirun -n 2 ./opt/build/main
+  # chmod +x /opt/build/main
+  mpirun -n 2 /opt/build/main
   exec echo "$@"
     
 
