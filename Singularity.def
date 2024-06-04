@@ -6,7 +6,7 @@ From: ubuntu:22.04
 
 
 %environment
-    export PATH=/opt:$PATH
+    # export PATH=/opt:$PATH
     export SINGULARITY_BINDPATH=/opt/build
 
 
