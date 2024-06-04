@@ -20,21 +20,21 @@ jobs:
         singularity-version: 3.8.3  
 
     - name: Create Singularity container
-      run: singularity build --fakeroot --force Singularity.sif Singularity.def
+      run: singularity build --fakeroot --force Singularity1.sif Singularity.def
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: singularity-container
-        path: Singularity.sif
+        path: Singularity1.sif
 
     - name: Install sshpass
       run: sudo apt-get install -y sshpass
 
     - name: Tranfer with scp
-      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity.sif job.sh ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}
+      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity1.sif job1.sh ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}
 
     - name: Run job
       run: |
         ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
-        sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it "chmod +x job.sh && sbatch job.sh"
+        sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it "chmod +x job1.sh && sbatch job1.sh"
