@@ -7,6 +7,7 @@ From: ubuntu:22.04
 
 %environment
     export PATH=/opt:$PATH
+    export SINGULARITY_BINDPATH=/opt/build
 
 
 %post
@@ -16,7 +17,6 @@ From: ubuntu:22.04
         mpi-default-dev \
         cmake
     apt-get clean
-    export PATH=/opt:$PATH
 
     mkdir -p opt && cd opt
     mkdir -p build && cd build

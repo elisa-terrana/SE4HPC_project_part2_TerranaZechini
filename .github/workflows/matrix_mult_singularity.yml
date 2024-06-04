@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-  
+
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
         singularity-version: 3.8.3
 
     - name: Create Singularity container
-      run: singularity build --fakeroot Singularity.sif Singularity.def
+      run: singularity build --fakeroot --force Singularity.sif Singularity.def
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
