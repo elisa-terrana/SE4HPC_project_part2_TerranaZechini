@@ -8,6 +8,4 @@
 export TMPDIR=$HOME/tmp
 mkdir -p $TMPDIR
 
-export SINGULARITY_BINDPATH=/opt/build
-
 singularity run -c --bind /scratch_local:$TMPDIR Singularity1.sif
