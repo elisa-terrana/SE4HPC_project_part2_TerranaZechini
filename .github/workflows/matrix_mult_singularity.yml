@@ -37,4 +37,4 @@ jobs:
     - name: Run job
       run: |
         ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
-        sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it "chmod +x job1.sh && sbatch job1.sh"
+        sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it "chmod +x matrix*.txt && chmod +x job1.sh && sbatch job1.sh"
