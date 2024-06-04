@@ -6,7 +6,6 @@ From: ubuntu:22.04
 
 
 %environment
-    export LC_ALL=C
     export PATH=/opt:$PATH
 
 
@@ -17,6 +16,7 @@ From: ubuntu:22.04
         mpi-default-dev \
         cmake
     apt-get clean
+    export PATH=/opt:$PATH
 
     mkdir -p opt && cd opt
     mkdir -p build && cd build

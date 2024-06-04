@@ -3,7 +3,7 @@ name: Matrix Multiplication with Singularity Container
 on: [push, pull_request]
 
 jobs:
-  build:
+  setup:
 
     runs-on: ubuntu-latest
 
@@ -25,6 +25,12 @@ jobs:
     # - name: Build
     #   run: cmake --build ${{github.workspace}}/build
 
+  build:
+    needs: setup
+
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Create Singularity container
       run: singularity build --fakeroot Singularity.sif Singularity.def
 
@@ -36,6 +42,11 @@ jobs:
 
     # - name: Run Singularity container
     #   run: singularity run Singularity.sif
+
+  run:
+    needs: [setup, build]
+
+    runs-on: ubuntu-latest
 
     - name: Install sshpass
       run: sudo apt-get install -y sshpass
