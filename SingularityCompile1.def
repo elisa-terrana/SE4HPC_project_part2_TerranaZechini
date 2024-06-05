@@ -2,7 +2,7 @@ Bootstrap: docker
 From: ubuntu:22.04
 
 %files
-    ./ /opt/
+    ./ /bd/
 
 
 %post
@@ -34,7 +34,8 @@ From: ubuntu:22.04
     # cmake ..
     # cmake --build .
     cd ../../..
-    cd opt && mpicc -o main /src/main.cpp
+    mkdir -p /bd
+    cd /bd && mpicc -o main /src/main.cpp
 
 
 %environment
@@ -44,7 +45,7 @@ From: ubuntu:22.04
     export PATH="$OMPI_DIR/bin:$PATH"
     export LD_LIBRARY_PATH="$OMPI_DIR/lib:$LD_LIBRARY_PATH"
     export MANPATH="$OMPI_DIR/share/man:$MANPATH"
-    export SINGULARITY_PATH=/opt/:$SINGULARITY_PATH
+    export SINGULARITY_PATH=/bd/:$SINGULARITY_PATH
 
 
 %labels
