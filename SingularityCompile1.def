@@ -29,7 +29,7 @@ From: ubuntu:22.04
     export PATH=$OMPI_DIR/bin:$PATH
     export LD_LIBRARY_PATH=$OMPI_DIR/lib:$LD_LIBRARY_PATH
 
-    mkdir -p opt && cd opt
+    cd /opt
     mkdir -p build && cd build
     cmake ..
     cmake --build .
