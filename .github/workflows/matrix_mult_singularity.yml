@@ -38,3 +38,20 @@ jobs:
       run: |
         ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
         sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it "sbatch job.sh"
+
+    - name: Download output from the cluster
+      run: |
+        sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}/output.txt ./output.txt
+        sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}/error.txt ./error.txt
+
+    - name: Upload output
+      uses: actions/upload-artifact@v4
+      with:
+        name: output
+        path: output.txt
+
+    - name: Upload output
+      uses: actions/upload-artifact@v4
+      with:
+        name: error
+        path: error.txt
