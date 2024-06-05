@@ -8,12 +8,8 @@ include_directories(${MPI_INCLUDE_PATH})
 
 include_directories(include)
 
-# REMOVED BY US
 add_subdirectory(googletest)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-
-# ADDED BY US
-# find_package(GTest REQUIRED)
 
 # non aggiungo matrix_mult che non serve
 set(SOURCES src/main.cpp)

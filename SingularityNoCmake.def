@@ -2,7 +2,9 @@ Bootstrap: library
 From: ubuntu:22.04
 
 %files
-    ./ /bd/
+    ./build/main /bd/
+    ./matrixA.txt /bd/
+    ./matrixB.txt /bd/
 
 %post
     apt-get update
@@ -12,18 +14,12 @@ From: ubuntu:22.04
         mpi-default-dev 
     apt-get clean
 
-    cd /bd
-    mkdir -p build && cd build
-    cmake ..
-    cmake --build .
-
 %environment
     export PATH=/bd/:$PATH
 
-
 %runscript
     cd /bd
-    mpirun -n 2 ./build/main
+    mpirun -n 2 ./main
     
 %labels
     Author TerranaZechini

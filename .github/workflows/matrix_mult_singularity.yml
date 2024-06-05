@@ -14,19 +14,6 @@ jobs:
 
     - name: Setup MPI
       uses: mpi4py/setup-mpi@v1
-      
-    - uses: Bacondish2023/setup-googletest@v1
-      with:
-        tag: v1.14.0
-
-    - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-
-    - name: Build
-      run: cmake --build ${{github.workspace}}/build
-
-    - name: Run Tests
-      run: ./build/test_multiplication
 
     - uses: eWaterCycle/setup-singularity@v7
       with:
@@ -41,5 +28,13 @@ jobs:
         name: singularity-container
         path: Singularity.sif
 
-    - name: Run a singularity container
-      run: singularity run Singularity.sif
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
+    - name: Tranfer with scp
+      run: sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no Singularity.sif job.sh ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}
+
+    - name: Run job
+      run: |
+        ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
+        sshpass -p ${{ secrets.PASSWORDTZ }} ssh -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it "sbatch job.sh"
