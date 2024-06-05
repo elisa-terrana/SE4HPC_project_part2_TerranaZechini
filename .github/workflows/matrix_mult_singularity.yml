@@ -49,14 +49,3 @@ jobs:
       with:
         name: output
         path: output.txt
-
-    - name: Download error from the cluster
-      run: |
-        ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
-        sshpass -p ${{ secrets.PASSWORDTZ }} scp -o StrictHostKeyChecking=no ${{ secrets.USERTZ }}@login.g100.cineca.it:/g100/home/usertrain/${{ secrets.USERTZ }}/error.txt ./error.txt
-
-    - name: Upload error
-      uses: actions/upload-artifact@v4
-      with:
-        name: error
-        path: error.txt
