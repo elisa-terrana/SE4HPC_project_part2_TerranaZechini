@@ -33,7 +33,8 @@ From: ubuntu:22.04
     # mkdir -p build && cd build
     # cmake ..
     # cmake --build .
-    cd /opt && mpicc -o main /src/main.cpp
+    cd ../../..
+    cd opt && mpicc -o main /src/main.cpp
 
 
 %environment
