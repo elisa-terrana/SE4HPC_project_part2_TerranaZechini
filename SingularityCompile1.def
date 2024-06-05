@@ -29,10 +29,12 @@ From: ubuntu:22.04
     export PATH=$OMPI_DIR/bin:$PATH
     export LD_LIBRARY_PATH=$OMPI_DIR/lib:$LD_LIBRARY_PATH
 
-    cd /opt
-    mkdir -p build && cd build
-    cmake ..
-    cmake --build .
+    # cd /opt
+    # mkdir -p build && cd build
+    # cmake ..
+    # cmake --build .
+    cd /opt && mpicc -o main /src/main.cpp
+
 
 %environment
     export LC_ALL=C
@@ -42,7 +44,7 @@ From: ubuntu:22.04
     export LD_LIBRARY_PATH="$OMPI_DIR/lib:$LD_LIBRARY_PATH"
     export MANPATH="$OMPI_DIR/share/man:$MANPATH"
     export SINGULARITY_PATH=/opt/:$SINGULARITY_PATH
-    
+
 
 %labels
     Author TerranaZechini
