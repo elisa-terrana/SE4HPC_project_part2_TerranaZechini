@@ -11,4 +11,4 @@
 ---
 ### Step 3 - Automating a job submission with containerization
 
-* The extended version of the action, in which we completely automate the process, is located in .github/workflows/matrix_mult_singularity.yml, in particular the last ***n*** steps are in charge of transferring files with scp to the cluster, running the job and retrieving the output from the cluster.
+* The extended version of the action, in which we completely automate the process, is located in .github/workflows/matrix_mult_singularity.yml, in particular the last 7 steps are in charge of transferring files with scp to the cluster, running the job and retrieving the output from the cluster.
