@@ -11,4 +11,4 @@ mkdir -p $TMPDIR
 module load singularity
 module load openmpi
 
-mpirun -n 2 singularity run -c --bind /scratch_local:$TMPDIR Singularity1.sif
+mpirun -n 2 singularity run -c --bind /scratch_local:$TMPDIR Singularity1.sif /opt/build/main
