@@ -23,9 +23,9 @@ From: ubuntu:22.04
     export PATH=/opt/:$PATH
 
 
-%runscript
-    cd /opt
-    mpirun -n 2 ./build/main
+# %runscript
+#     cd /opt
+#     mpirun -n 2 ./build/main
     
 
 %labels
